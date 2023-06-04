@@ -1,0 +1,64 @@
+openapi: 3.0.1
+info:
+  title: Sample JMS App
+  version: v0
+servers:
+  - url: http://localhost:8080
+    description: Sample Open api
+paths:
+  /employee:
+    post:
+      tags:
+        - sample employee api
+      operationId: employee
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Request'
+            examples:
+              200_OKAY_1:
+                value:
+                  name: 'Contract Test 1'
+                  role: 'Admin'
+              200_OKAY_2:
+                value:
+                  name: 'Contract Test 2'
+                  role: 'Admin'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+              examples:
+                200_OKAY_1:
+                  value:
+                    id: 20
+                    name: 'Contract Test1'
+                    role: 'Admin'
+                200_OKAY_2:
+                  value:
+                    id: 20
+                    name: 'Contract Test2'
+                    role: 'Admin'
+components:
+  schemas:
+    Request:
+      type: object
+      properties:
+        name:
+          type: string
+        role:
+          type: string
+    Response:
+      type: object
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+        role:
+          type: string

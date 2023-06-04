@@ -1,0 +1,18 @@
+asyncapi: 2.0.0
+info:
+  title: JMS Queue Example
+  version: '1.0.0'
+servers:
+  activemq:
+    url: tcp://localhost:61616
+    protocol: jms
+channels:
+  taskQueueText:
+    publish:
+      operationId: publishStringMessage
+      message:
+        payload:
+          type: string
+    bindings:
+      amqp:
+        is: queue
